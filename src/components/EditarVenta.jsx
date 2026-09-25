@@ -38,7 +38,9 @@ export default function EditarVenta({ venta, onCancel, onSaved }) {
   };
 
   const productoSeleccionado = productos.find(p => p.id === Number(form.producto_id));
-  const total = productoSeleccionado ? (productoSeleccionado.precio * form.cantidad).toFixed(2) : '0.00';
+  const total = productoSeleccionado 
+  ? (Number(productoSeleccionado.precio) * Number(form.cantidad || 0)).toFixed(2) 
+  : '0.00';
 
   return (
     <div className="form-container">
@@ -95,11 +97,6 @@ export default function EditarVenta({ venta, onCancel, onSaved }) {
               required 
             />
           </div>
-        </div>
-
-        <div className="total-preview">
-          <span>Total:</span>
-          <strong>${total}</strong>
         </div>
 
         <div className="form-actions">

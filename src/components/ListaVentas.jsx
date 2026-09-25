@@ -112,7 +112,7 @@ export default function ListaVentas({ onAgregar }) {
                   <td className="total">${Number(v.total).toFixed(2)}</td>
                   <td className="fecha">{formatearFecha(v.fecha)}</td>
                   <td className="acciones">
-                    <button className="btn-editar" onClick={() => setEditando(v)}>️ Editar</button>
+                    <button className="btn-editar" onClick={() => setEditando(v)}>✏️ Editar</button>
                     <button className="btn-eliminar" onClick={() => eliminar(v.id)}>🗑️ Eliminar</button>
                   </td>
                 </tr>
