@@ -38,22 +38,22 @@ export default function EditarVenta({ venta, onCancel, onSaved }) {
   };
 
   const productoSeleccionado = productos.find(p => p.id === Number(form.producto_id));
-  const total = productoSeleccionado 
-  ? (Number(productoSeleccionado.precio) * Number(form.cantidad || 0)).toFixed(2) 
-  : '0.00';
+  const total = productoSeleccionado
+    ? (Number(productoSeleccionado.precio) * Number(form.cantidad || 0)).toFixed(2)
+    : '0.00';
 
   return (
     <div className="form-container">
       <div className="form-header">
         <h2>✏️ Editar Venta #{venta.id}</h2>
-        <button className="btn-cerrar" onClick={onCancel}></button>
+        <button className="btn-cerrar" onClick={onCancel}>✕</button>
       </div>
       <form onSubmit={handleSubmit} className="form-venta">
         <div className="form-group">
           <label>👤 Estudiante</label>
-          <select 
-            value={form.estudiante_id} 
-            onChange={(e) => setForm({ ...form, estudiante_id: e.target.value })} 
+          <select
+            value={form.estudiante_id}
+            onChange={(e) => setForm({ ...form, estudiante_id: e.target.value })}
             required
           >
             {estudiantes.map(e => (
@@ -64,9 +64,9 @@ export default function EditarVenta({ venta, onCancel, onSaved }) {
 
         <div className="form-group">
           <label>🍔 Producto</label>
-          <select 
-            value={form.producto_id} 
-            onChange={(e) => setForm({ ...form, producto_id: e.target.value })} 
+          <select
+            value={form.producto_id}
+            onChange={(e) => setForm({ ...form, producto_id: e.target.value })}
             required
           >
             {productos.map(p => (
@@ -78,25 +78,29 @@ export default function EditarVenta({ venta, onCancel, onSaved }) {
         <div className="form-row">
           <div className="form-group">
             <label>🔢 Cantidad</label>
-            <input 
-              type="number" 
-              min="1" 
+            <input
+              type="number"
+              min="1"
               max="100"
-              value={form.cantidad} 
-              onChange={(e) => setForm({ ...form, cantidad: e.target.value })} 
-              required 
+              value={form.cantidad}
+              onChange={(e) => setForm({ ...form, cantidad: e.target.value })}
+              required
             />
           </div>
-
           <div className="form-group">
             <label>📅 Fecha</label>
-            <input 
-              type="date" 
-              value={form.fecha} 
-              onChange={(e) => setForm({ ...form, fecha: e.target.value })} 
-              required 
+            <input
+              type="date"
+              value={form.fecha}
+              onChange={(e) => setForm({ ...form, fecha: e.target.value })}
+              required
             />
           </div>
+        </div>
+
+        <div className="total-preview">
+          <span>Total actualizado</span>
+          <strong>${total}</strong>
         </div>
 
         <div className="form-actions">

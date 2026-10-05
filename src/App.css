@@ -1,39 +1,91 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* ═══════════════════════════════════════
+   IMPORTS
+═══════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
-* {
+/* ═══════════════════════════════════════
+   VARIABLES - PALETA CÁLIDA CAFETERÍA
+═══════════════════════════════════════ */
+:root {
+  --cream: #faf6f0;
+  --cream-dark: #f0e8d8;
+  --paper: #fffdf8;
+  --coffee: #3d2817;
+  --coffee-light: #5c3d24;
+  --coffee-dark: #2a1810;
+  --caramel: #c8956d;
+  --caramel-dark: #a67548;
+  --gold: #d4a574;
+  --gold-bright: #e8b888;
+  --latte: #e8d5b7;
+  --espresso: #1a0f08;
+
+  --success: #5a8a3a;
+  --success-bg: #e8f0dc;
+  --danger: #b84a3a;
+  --danger-bg: #f5dcd6;
+  --warning: #c88a2a;
+  --info: #4a6a8a;
+  --info-bg: #dce8f0;
+
+  --shadow-sm: 0 1px 3px rgba(61, 40, 23, 0.06), 0 1px 2px rgba(61, 40, 23, 0.04);
+  --shadow-md: 0 4px 12px rgba(61, 40, 23, 0.08), 0 2px 4px rgba(61, 40, 23, 0.04);
+  --shadow-lg: 0 12px 32px rgba(61, 40, 23, 0.12), 0 4px 8px rgba(61, 40, 23, 0.06);
+  --shadow-xl: 0 24px 60px rgba(61, 40, 23, 0.15), 0 8px 16px rgba(61, 40, 23, 0.08);
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+
+  --border-soft: #e8dcc4;
+  --border-medium: #d4c4a8;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all 0.25s var(--ease);
+}
+
+/* ═══════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════ */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #13131a;
-  --bg-card: #1a1a24;
-  --bg-hover: #22222e;
-  --border: #2a2a3a;
-  --text-primary: #e8e8f0;
-  --text-secondary: #8888a0;
-  --accent: #7c5cfc;
-  --accent-hover: #6a4ae8;
-  --accent-glow: rgba(124, 92, 252, 0.3);
-  --success: #00d68f;
-  --danger: #ff4757;
-  --warning: #ffa502;
-  --info: #3742fa;
-  --gradient: linear-gradient(135deg, #7c5cfc 0%, #a855f7 50%, #ec4899 100%);
-  --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  --shadow-glow: 0 0 40px rgba(124, 92, 252, 0.15);
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--coffee);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(212, 165, 116, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(200, 149, 109, 0.06) 0%, transparent 40%);
 }
 
+#root {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  text-align: left !important;
+  border: none !important;
+  min-height: 100vh;
+}
+
+/* ═══════════════════════════════════════
+   APP LAYOUT
+═══════════════════════════════════════ */
 .app {
   min-height: 100vh;
   display: flex;
@@ -41,52 +93,80 @@ body {
 }
 
 /* ═══════════════════════════════════════
-   HEADER
+   HEADER - TIPO MENÚ DE CAFETERÍA
 ═══════════════════════════════════════ */
 .header {
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border);
-  padding: 24px 40px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--border-soft);
+  padding: 28px 40px;
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(12px);
+  background: rgba(255, 253, 248, 0.92);
 }
 
 .header-content {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
 }
 
+/* ═══════════════════════════════════════
+   LOGO SVG - TAZA DE CAFÉ ANIMADA
+═══════════════════════════════════════ */
 .logo {
-  font-size: 2.8rem;
-  filter: drop-shadow(0 0 20px rgba(124, 92, 252, 0.5));
-  animation: float 3s ease-in-out infinite;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 12px rgba(61, 40, 23, 0.15));
+  transition: transform 0.4s var(--ease);
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+.logo:hover {
+  transform: scale(1.08) rotate(-5deg);
 }
 
-.header h1 {
-  font-size: 2rem;
+.logo .steam {
+  animation: steamRise 3s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.logo .steam-1 { animation-delay: 0s; }
+.logo .steam-2 { animation-delay: 0.5s; }
+.logo .steam-3 { animation-delay: 1s; }
+
+@keyframes steamRise {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateY(0) scaleY(0.8);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-4px) scaleY(1.1);
+  }
+}
+
+.header-text h1 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
   font-weight: 800;
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--coffee);
   letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin: 0;
 }
 
 .subtitulo-header {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  font-weight: 400;
-  margin-top: 2px;
+  color: var(--caramel-dark);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 /* ═══════════════════════════════════════
@@ -94,67 +174,105 @@ body {
 ═══════════════════════════════════════ */
 .main {
   flex: 1;
-  max-width: 1400px;
+  max-width: 1200px;
   width: 100%;
-  margin: 40px auto;
-  padding: 0 24px;
+  margin: 48px auto;
+  padding: 0 32px;
 }
 
 /* ═══════════════════════════════════════
-   LISTA DE VENTAS
+   LISTA DE VENTAS - CARD ELEGANTE
 ═══════════════════════════════════════ */
 .lista-container {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 32px;
-  box-shadow: var(--shadow);
+  background: var(--paper);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.lista-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--caramel) 0%, var(--gold) 50%, var(--caramel) 100%);
 }
 
 .lista-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
+  padding-bottom: 24px;
+  border-bottom: 1px dashed var(--border-soft);
 }
 
 .lista-header h2 {
-  color: var(--text-primary);
-  font-size: 1.6rem;
+  font-family: var(--font-display);
+  color: var(--coffee);
+  font-size: 1.9rem;
   font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  margin: 0;
+  letter-spacing: -0.5px;
 }
 
 .subtitulo {
-  color: var(--text-secondary);
+  color: var(--caramel-dark);
   font-size: 0.85rem;
-  margin-top: 4px;
+  margin-top: 6px;
+  font-weight: 500;
 }
 
+/* ═══════════════════════════════════════
+   BOTÓN PRINCIPAL - ESTILO CAFETERÍA
+═══════════════════════════════════════ */
 .btn-nueva {
-  background: var(--gradient);
-  color: white;
+  background: var(--coffee);
+  color: var(--cream);
   border: none;
-  padding: 12px 24px;
-  border-radius: 12px;
+  padding: 14px 28px;
+  border-radius: 50px;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 20px var(--accent-glow);
-  font-family: inherit;
+  gap: 10px;
+  transition: var(--transition);
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-body);
+  letter-spacing: 0.3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-nueva::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.1) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.6s var(--ease);
+}
+
+.btn-nueva:hover::after {
+  transform: translateX(100%);
 }
 
 .btn-nueva:hover {
+  background: var(--coffee-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px var(--accent-glow);
+  box-shadow: var(--shadow-lg);
 }
 
 .btn-nueva:active {
@@ -162,100 +280,126 @@ body {
 }
 
 .btn-nueva span {
-  font-size: 1.3rem;
-  font-weight: bold;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1;
 }
 
 /* ═══════════════════════════════════════
-   TABLA
+   TABLA - ESTILO MENÚ DE CAFETERÍA
 ═══════════════════════════════════════ */
 .tabla-wrapper {
   overflow-x: auto;
-  border-radius: 14px;
-  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
 }
 
 .tabla-ventas {
   width: 100%;
-  border-collapse: collapse;
-  background: var(--bg-card);
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--paper);
 }
 
 .tabla-ventas th {
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
-  padding: 16px 14px;
+  background: var(--cream-dark);
+  color: var(--coffee-light);
+  padding: 16px 18px;
   text-align: left;
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  border-bottom: 1px solid var(--border);
+  letter-spacing: 1.2px;
+  border-bottom: 2px solid var(--border-medium);
   white-space: nowrap;
+  font-family: var(--font-body);
+}
+
+.tabla-ventas th:first-child {
+  border-top-left-radius: var(--radius-lg);
+}
+
+.tabla-ventas th:last-child {
+  border-top-right-radius: var(--radius-lg);
 }
 
 .tabla-ventas td {
-  padding: 16px 14px;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.9rem;
-  color: var(--text-primary);
-  transition: background 0.2s;
+  padding: 18px;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.92rem;
+  color: var(--coffee);
+  transition: background 0.2s var(--ease);
+  vertical-align: middle;
 }
 
-.tabla-ventas tr:hover td {
-  background: var(--bg-hover);
+.tabla-ventas tbody tr {
+  transition: var(--transition);
 }
 
-.tabla-ventas tr:last-child td {
+.tabla-ventas tbody tr:hover td {
+  background: var(--cream);
+}
+
+.tabla-ventas tbody tr:last-child td {
   border-bottom: none;
 }
 
 .badge-id {
-  background: rgba(124, 92, 252, 0.15);
-  color: var(--accent);
+  background: var(--cream-dark);
+  color: var(--coffee-light);
   padding: 5px 12px;
   border-radius: 20px;
   font-weight: 600;
-  font-size: 0.8rem;
-  border: 1px solid rgba(124, 92, 252, 0.3);
+  font-size: 0.78rem;
+  border: 1px solid var(--border-soft);
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
 }
 
 .nombre-estudiante {
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--coffee);
 }
 
 .cantidad {
   font-weight: 700;
-  color: var(--accent);
+  color: var(--caramel-dark);
   font-size: 1rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .total {
   font-weight: 700;
   color: var(--success);
   font-size: 1.05rem;
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-display);
 }
 
 .fecha {
-  color: var(--text-secondary);
+  color: var(--caramel-dark);
   font-size: 0.85rem;
   font-variant-numeric: tabular-nums;
 }
 
 .img-producto {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   object-fit: cover;
-  border-radius: 10px;
-  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  background: var(--cream-dark);
   padding: 4px;
-  border: 1px solid var(--border);
-  transition: transform 0.3s;
+  border: 2px solid var(--border-soft);
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 .img-producto:hover {
-  transform: scale(1.15);
+  transform: scale(1.1) rotate(-3deg);
+  box-shadow: var(--shadow-md);
+  border-color: var(--caramel);
 }
 
 .acciones {
@@ -265,41 +409,44 @@ body {
 }
 
 .btn-editar, .btn-eliminar {
-  padding: 7px 14px;
+  padding: 8px 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: 50px;
   font-size: 0.8rem;
   cursor: pointer;
   font-weight: 600;
-  transition: all 0.2s;
-  font-family: inherit;
-  display: flex;
+  transition: var(--transition);
+  font-family: var(--font-body);
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
+  letter-spacing: 0.2px;
 }
 
 .btn-editar {
-  background: rgba(55, 66, 250, 0.15);
-  color: #6c7cff;
-  border: 1px solid rgba(55, 66, 250, 0.3);
+  background: var(--info-bg);
+  color: var(--info);
+  border: 1px solid transparent;
 }
 
 .btn-editar:hover {
   background: var(--info);
   color: white;
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 106, 138, 0.25);
 }
 
 .btn-eliminar {
-  background: rgba(255, 71, 87, 0.15);
+  background: var(--danger-bg);
   color: var(--danger);
-  border: 1px solid rgba(255, 71, 87, 0.3);
+  border: 1px solid transparent;
 }
 
 .btn-eliminar:hover {
   background: var(--danger);
   color: white;
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(184, 74, 58, 0.25);
 }
 
 /* ═══════════════════════════════════════
@@ -307,30 +454,53 @@ body {
 ═══════════════════════════════════════ */
 .vacio {
   text-align: center;
-  padding: 80px 20px;
-  color: var(--text-secondary);
+  padding: 80px 24px;
+  color: var(--caramel-dark);
+}
+
+.vacio-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  opacity: 0.4;
+  animation: gentleFloat 3s ease-in-out infinite;
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 .vacio p {
   font-size: 1.1rem;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--coffee-light);
 }
 
 .loading {
   text-align: center;
   padding: 80px;
-  background: var(--bg-card);
-  border-radius: 20px;
-  border: 1px solid var(--border);
+  background: var(--paper);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-lg);
+}
+
+.loading p {
+  color: var(--caramel-dark);
+  font-family: var(--font-display);
+  font-style: italic;
+  margin-top: 8px;
 }
 
 .spinner {
-  width: 50px;
-  height: 50px;
-  border: 3px solid var(--border);
-  border-top: 3px solid var(--accent);
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--cream-dark);
+  border-top: 3px solid var(--caramel);
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+  animation: spin 1s linear infinite;
   margin: 0 auto 20px;
 }
 
@@ -340,23 +510,35 @@ body {
 }
 
 /* ═══════════════════════════════════════
-   FORMULARIO
+   FORMULARIO - ESTILO RECETA DE CAFÉ
 ═══════════════════════════════════════ */
 .form-container {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 36px;
-  box-shadow: var(--shadow);
-  max-width: 600px;
+  background: var(--paper);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: 44px;
+  box-shadow: var(--shadow-xl);
+  max-width: 620px;
   margin: 0 auto;
-  animation: slideIn 0.3s ease-out;
+  animation: slideUp 0.4s var(--ease);
+  position: relative;
 }
 
-@keyframes slideIn {
+.form-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--caramel) 0%, var(--gold) 50%, var(--caramel) 100%);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+@keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -368,42 +550,47 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 28px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--border-soft);
 }
 
 .form-header h2 {
-  color: var(--text-primary);
-  font-size: 1.5rem;
+  font-family: var(--font-display);
+  color: var(--coffee);
+  font-size: 1.7rem;
   font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.3px;
 }
 
 .btn-cerrar {
-  background: var(--bg-hover);
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  font-size: 1.2rem;
+  background: var(--cream);
+  border: 1px solid var(--border-soft);
+  color: var(--coffee-light);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 300;
 }
 
 .btn-cerrar:hover {
   background: var(--danger);
   color: white;
   border-color: var(--danger);
+  transform: rotate(90deg) scale(1.05);
 }
 
 .form-venta {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
 }
 
 .form-group {
@@ -414,50 +601,52 @@ body {
 
 .form-group label {
   font-weight: 600;
-  color: var(--text-primary);
-  font-size: 0.85rem;
+  color: var(--coffee);
+  font-size: 0.82rem;
   display: flex;
   align-items: center;
-  gap: 6px;
-  letter-spacing: 0.3px;
+  gap: 8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-family: var(--font-body);
 }
 
-/*  FIX SELECTS - ESTO ARREGLA EL PROBLEMA */
 .form-group select,
 .form-group input {
-  padding: 13px 16px;
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  padding: 14px 18px;
+  background: var(--cream);
+  color: var(--coffee);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-md);
   font-size: 0.95rem;
-  font-family: inherit;
-  transition: all 0.2s;
+  font-family: var(--font-body);
+  transition: var(--transition);
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
+  font-weight: 500;
 }
 
 .form-group select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238888a0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath fill='%235c3d24' d='M7 10L2 5h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 14px center;
-  padding-right: 40px;
+  background-position: right 16px center;
+  padding-right: 44px;
 }
 
 .form-group select option {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  padding: 10px;
+  background: var(--paper);
+  color: var(--coffee);
+  padding: 12px;
 }
 
 .form-group select:focus,
 .form-group input:focus {
   outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-glow);
-  background: var(--bg-primary);
+  border-color: var(--caramel);
+  background: var(--paper);
+  box-shadow: 0 0 0 4px rgba(200, 149, 109, 0.15);
 }
 
 .form-group input[type="date"] {
@@ -465,79 +654,102 @@ body {
 }
 
 .form-group input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.7);
+  filter: invert(0.3) sepia(1) saturate(3) hue-rotate(10deg);
   cursor: pointer;
+  opacity: 0.7;
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
 }
 
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 18px;
 }
 
 .total-preview {
-  background: linear-gradient(135deg, rgba(124, 92, 252, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
-  border: 1px solid rgba(124, 92, 252, 0.3);
-  padding: 18px 22px;
-  border-radius: 12px;
+  background: linear-gradient(135deg, var(--cream-dark) 0%, var(--latte) 100%);
+  border: 1.5px dashed var(--caramel);
+  padding: 20px 24px;
+  border-radius: var(--radius-lg);
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 1rem;
+  transition: var(--transition);
+}
+
+.total-preview:hover {
+  transform: scale(1.01);
+  box-shadow: var(--shadow-md);
 }
 
 .total-preview span {
-  color: var(--text-secondary);
-  font-weight: 500;
+  color: var(--coffee-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
 }
 
 .total-preview strong {
   color: var(--success);
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.8rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-display);
 }
 
 .form-actions {
   display: flex;
   gap: 12px;
   justify-content: flex-end;
-  margin-top: 8px;
+  margin-top: 12px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--border-soft);
 }
 
 .btn-cancelar, .btn-guardar, .btn-actualizar {
-  padding: 12px 24px;
+  padding: 13px 28px;
   border: none;
-  border-radius: 10px;
-  font-size: 0.95rem;
+  border-radius: 50px;
+  font-size: 0.92rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
-  font-family: inherit;
+  transition: var(--transition);
+  font-family: var(--font-body);
+  letter-spacing: 0.3px;
 }
 
 .btn-cancelar {
-  background: var(--bg-hover);
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--coffee-light);
+  border: 1.5px solid var(--border-medium);
 }
 
 .btn-cancelar:hover {
-  background: var(--border);
-  color: var(--text-primary);
+  background: var(--cream);
+  border-color: var(--coffee-light);
+  color: var(--coffee);
 }
 
 .btn-guardar, .btn-actualizar {
-  background: var(--gradient);
-  color: white;
-  box-shadow: 0 4px 20px var(--accent-glow);
+  background: var(--coffee);
+  color: var(--cream);
+  box-shadow: var(--shadow-md);
 }
 
-.btn-guardar:hover:not(:disabled), .btn-actualizar:hover:not(:disabled) {
+.btn-guardar:hover:not(:disabled),
+.btn-actualizar:hover:not(:disabled) {
+  background: var(--coffee-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px var(--accent-glow);
+  box-shadow: var(--shadow-lg);
 }
 
-.btn-guardar:disabled, .btn-actualizar:disabled {
+.btn-guardar:disabled,
+.btn-actualizar:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
@@ -548,12 +760,18 @@ body {
 ═══════════════════════════════════════ */
 .footer {
   text-align: center;
-  padding: 24px;
-  color: var(--text-secondary);
+  padding: 28px 24px;
+  color: var(--caramel-dark);
   font-size: 0.85rem;
-  border-top: 1px solid var(--border);
-  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-soft);
+  background: var(--paper);
   margin-top: auto;
+  font-family: var(--font-display);
+  font-style: italic;
+}
+
+.footer p::before {
+  content: '☕ ';
 }
 
 /* ═══════════════════════════════════════
@@ -561,76 +779,83 @@ body {
 ═══════════════════════════════════════ */
 @media (max-width: 768px) {
   .header {
-    padding: 16px 20px;
+    padding: 20px;
   }
-  
-  .header h1 {
-    font-size: 1.4rem;
+  .header-text h1 {
+    font-size: 1.5rem;
   }
-  
   .logo {
-    font-size: 2rem;
+    width: 44px;
+    height: 44px;
   }
-  
   .main {
-    margin: 20px auto;
+    margin: 24px auto;
     padding: 0 16px;
   }
-  
   .lista-container, .form-container {
-    padding: 20px;
-    border-radius: 16px;
+    padding: 24px;
+    border-radius: var(--radius-lg);
   }
-  
   .lista-header {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+  .lista-header h2 {
+    font-size: 1.5rem;
+  }
   .form-row {
     grid-template-columns: 1fr;
   }
-  
   .tabla-ventas th, .tabla-ventas td {
     padding: 12px 10px;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
   }
-  
   .acciones {
     flex-direction: column;
   }
-  
   .btn-editar, .btn-eliminar {
     width: 100%;
     justify-content: center;
   }
+  .btn-nueva {
+    width: 100%;
+    justify-content: center;
+  }
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+  .btn-cancelar, .btn-guardar, .btn-actualizar {
+    width: 100%;
+  }
 }
 
 /* ═══════════════════════════════════════
-   SCROLLBAR PERSONALIZADA
+   SCROLLBAR CÁLIDA
 ═══════════════════════════════════════ */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
 }
-
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: var(--cream);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 10px;
+  background: var(--caramel);
+  border-radius: 12px;
+  border: 3px solid var(--cream);
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
+  background: var(--coffee-light);
 }
 
-/* ═══════════════════════════════════════
-   SELECCIÓN DE TEXTO
-═══════════════════════════════════════ */
 ::selection {
-  background: var(--accent);
-  color: white;
+  background: var(--caramel);
+  color: var(--paper);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

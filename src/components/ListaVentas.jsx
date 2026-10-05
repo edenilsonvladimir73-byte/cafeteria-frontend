@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { api } from '../api';
 import EditarVenta from './EditarVenta';
 
-// Función para formatear fecha
 const formatearFecha = (fecha) => {
   if (!fecha) return '-';
   const d = new Date(fecha);
@@ -74,7 +73,8 @@ export default function ListaVentas({ onAgregar }) {
 
       {ventas.length === 0 ? (
         <div className="vacio">
-          <p>️ No hay ventas registradas aún</p>
+          <div className="vacio-icon">☕</div>
+          <p>No hay ventas registradas aún</p>
           <button className="btn-nueva" onClick={onAgregar}>Crear primera venta</button>
         </div>
       ) : (
@@ -100,9 +100,9 @@ export default function ListaVentas({ onAgregar }) {
                   <td className="nombre-estudiante">{v.estudiante}</td>
                   <td>{v.producto}</td>
                   <td>
-                    <img 
-                      src={v.producto_imagen} 
-                      alt={v.producto} 
+                    <img
+                      src={v.producto_imagen}
+                      alt={v.producto}
                       className="img-producto"
                       onError={handleImgError}
                     />
